@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Live Streaming</title>
+        <!-- <script src="/screen_sharing/main.js" defer></script> -->
+    </head>
+    <body>
+        <h1>Live Streaming</h1>
+        <input type="text" id="receiver-id">
+        <button type="button" onclick="CreateWebsocket()">Connection Handshake</button>
+        <h2>Your ID: <span id="sender-id"></span></h2>
+
+        <div>
+            <!-- Use JavaScript to create a WebSocket connection and display the video frames -->
+            <img id="video-stream" alt="something" width="500" height="300">
+            
+        </div>
+        <script src="/static/screen_streaming.js"></script>
+    </body>
+
+</html>
+
+
+
+

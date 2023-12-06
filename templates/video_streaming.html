@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Live Streaming</title>
+        <!-- <script src="/static/video_streaming.js"></script> -->
+    </head>
+    <body>
+        <h1>Live Streaming</h1>
+        <div>
+            <!-- Use JavaScript to create a WebSocket connection and display the video frames -->
+            <img id="video-stream" width="500" height="300">
+            <script>
+                // This line creates a new WebSocket object and establishes a connection to the WebSocket endpoint provided by your FastAPI server. 
+                // The URL ws://127.0.0.1:8000/video_feed corresponds to the WebSocket endpoint you defined in your FastAPI application.
+                const socket = new WebSocket("ws://127.0.0.1:8000/video-feed");
+
+                // using a relative url
+                const host = window.location.hostname;
+                const port = window.location.port || (window.location.protocol === 'https:' ? 443 : 80);
+                console.log(host, port)
+                // Construct the WebSocket URL
+                // const socket = new WebSocket(`ws://${host}:${port}/video-feed`);
+                const videoElement = document.getElementById("video-stream");
+                
+                socket.onmessage = (event) => {
+                    // Set the received frame as the source of the image element
+                    videoElement.src = URL.createObjectURL(new Blob([event.data], { type: 'image/jpeg' }));
+                };
+               
+                
+            </script>
+        </div>
+    </body>
+</html>
+
+
+
+
